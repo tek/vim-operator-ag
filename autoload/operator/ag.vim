@@ -4,13 +4,13 @@ function! s:selection(motion_wise) "{{{
   execute 'normal!' '`[' . v . '`]"ay' 
   let selection = @a
   let @a = save_register
-  return selection
+  return shellescape(fnameescape(selection), 1)
 endfunction "}}}
 
 function! operator#ag#do(motion_wise) "{{{
-  call feedkeys(':'.g:operator_ag_cmd." '".s:selection(a:motion_wise)."' ")
+  call feedkeys(':'.g:operator_ag_cmd." ".s:selection(a:motion_wise))
 endfunction "}}}
 
 function! operator#ag#go(motion_wise) "{{{
-  exe g:operator_ag_cmd."''".s:selection(a:motion_wise)."''"
+  exe g:operator_ag_cmd." ".s:selection(a:motion_wise)
 endfunction "}}}
