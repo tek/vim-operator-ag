@@ -4,7 +4,11 @@ endif
 
 let g:operator_ag_cmd = 'Ag!'
 
-call operator#user#define('ag', 'operator#ag#do')
-call operator#user#define('agg', 'operator#ag#go')
+runtime autoload/operator/user.vim
+
+if exists('*operator#user#define')
+  call operator#user#define('ag', 'operator#ag#do')
+  call operator#user#define('agg', 'operator#ag#go')
+endif
 
 let g:loaded_operator_ag = 1
