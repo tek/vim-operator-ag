@@ -3,6 +3,7 @@ if exists('g:loaded_operator_ag')
 endif
 
 let g:operator_ag_cmd = 'Ag!'
+let g:operator_ag_escape = 1
 
 runtime autoload/operator/user.vim
 
